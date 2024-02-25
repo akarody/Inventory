@@ -1,0 +1,21 @@
+.Home {
+
+    width: 1366px;
+    background-color: red;
+
+    height: auto;
+}
+
+.list {
+    display: flex;
+    justify-content: space-between;
+    /* Distribute items evenly along the main axis */
+    padding: 0;
+    list-style-type: none;
+    /* Remove default list styles */
+}
+
+.list li {
+    flex: 1;
+    /* Each list item takes up an equal amount of space */
+}

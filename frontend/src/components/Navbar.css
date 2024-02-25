@@ -1,0 +1,9 @@
+.Navbar {
+    height: 64px;
+    background-color: white;
+    align-items: center;
+    display: flex;
+    /* justify-content: center; */
+    /* Horizontally center items */
+    align-items: center;
+}
