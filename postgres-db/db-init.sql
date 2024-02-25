@@ -47,11 +47,11 @@ CREATE TABLE IF NOT EXISTS public.cars (
     model VARCHAR(255),
     engine VARCHAR(255),
     location_a VARCHAR(255),
-    location_a_stock INTEGER,
+    location_a_stock NUMERIC,
     location_b VARCHAR(255),
-    location_b_stock INTEGER,
+    location_b_stock NUMERIC,
     unit VARCHAR(50),
-    rate INTEGER,
+    rate NUMERIC,
     value INTEGER,
     remarks TEXT
 );
