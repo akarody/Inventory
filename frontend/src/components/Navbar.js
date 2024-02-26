@@ -1,34 +1,36 @@
-import React, { useState } from 'react'
-import "./Navbar.css"
-import Stack from '@mui/material/Stack';
+import React, { useState } from 'react';
+import "./Navbar.css";
 import Button from '@mui/material/Button';
+import axios from "axios";
 
-const Navbar = () => {
+const Navbar = ({ onFileUpload }) => {
+    const [uploaded, setUploaded] = useState(false);
 
-    const [file, setFile] = useState(null);
-
-    const handleFileChange = (event) => {
-        setFile(event.target.files[0]);
-    };
-
-    const handleSubmit = async () => {
+    const handleFileChange = async (event) => {
+        const file = event.target.files[0];
         if (!file) {
             console.error('No file selected');
             return;
         }
+        handleSubmit(file);
+    };
 
+    const handleSubmit = async (file) => {
         const formData = new FormData();
         formData.append('csvFile', file);
         console.log(formData)
 
         try {
-            const response = await fetch('http://localhost:5000/csv/upload-csv', {
-                method: 'POST',
-                body: formData
+            const response = await axios.post('http://localhost:5000/csv/upload-csv', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
             });
 
-            if (response.ok) {
+            if (response.status === 200) {
                 console.log('File uploaded successfully');
+                setUploaded(true);
+                onFileUpload(); // Call the onFileUpload function passed from the Home component
             } else {
                 console.error('Failed to upload file');
             }
@@ -41,11 +43,10 @@ const Navbar = () => {
         <div className="Navbar">
             <input type="file" id="csvFileInput" accept=".csv" onChange={handleFileChange} style={{ display: 'none' }} />
             <label htmlFor="csvFileInput">
-                <Button variant="outlined" component="span" onClick={handleSubmit}>Import CSV</Button>
+                <Button variant="outlined" component="span">Import CSV</Button>
             </label>
         </div>
     );
 }
 
-
-export default Navbar
+export default Navbar;
