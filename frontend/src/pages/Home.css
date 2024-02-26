@@ -1,8 +1,6 @@
 .Home {
 
     width: 1366px;
-    background-color: red;
-
     height: auto;
 }
 
@@ -18,4 +16,27 @@
 .list li {
     flex: 1;
     /* Each list item takes up an equal amount of space */
+}
+
+
+.car-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.car-detail {
+    display: flex;
+    margin-bottom: 5px;
+    /* Optional: Add spacing between entries */
+}
+
+.key {
+    font-weight: bold;
+    /* Optional: If you want to style the keys differently */
+    margin-right: 5px;
+    /* Optional: Add spacing between key and value */
+}
+
+.value {
+    /* Optional: Style the value span as needed */
 }
