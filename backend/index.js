@@ -1,6 +1,7 @@
 const express = require('express');
 const { Pool } = require('pg');
-const multer = require('multer');
+const cors = require("cors");
+const corsConfig = require("./config/corsConfig")
 
 const app = express();
 const port = 5000;
@@ -12,6 +13,7 @@ const { pool } = require('./dbConnect');
 
 
 app.use(express.json());
+app.use(cors(corsConfig));
 app.use("/update", update)
 app.use("/csv", csvRoute);
 app.use("/view", view)
