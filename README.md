@@ -9,6 +9,7 @@ This project is a car inventory management system that allows users to upload CS
 - [API Endpoints](#api-endpoints)
   - [Upload CSV](#upload-csv)
   - [View Cars](#view-cars)
+  - [Update Inventory](#update-inventory)
 
 ## Installation
 
@@ -33,3 +34,10 @@ This project is a car inventory management system that allows users to upload CS
 - **Endpoint**: `/view/cars`
 - **Method**: GET
 - **Description**: This endpoint is used to fetch the list of cars stored in the database. It returns a JSON array containing details of all the cars in the inventory, including their part number, name, brand, model, engine, location, stock, unit, rate, value, remarks, and car name.
+
+### Update Inventory
+
+- **Endpoint**: `/update/update-inventory`
+- **Method**: Put
+
+
