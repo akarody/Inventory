@@ -39,5 +39,6 @@ This project is a car inventory management system that allows users to upload CS
 
 - **Endpoint**: `/update/update-inventory`
 - **Method**: Put
+- **Description**: This endpoint is used to update location_a_stock and location_b_stock in the database. 
 
 
