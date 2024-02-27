@@ -1,37 +1,37 @@
-// controllers/inventoryController.js
+const { pool } = require("../dbConnect")
 
 const updateInventory = async (req, res) => {
     try {
         // Extract data from request body
-        const { part_number, locA_stock, locB_stock } = req.body;
+        const { part_number, location_a_stock, location_b_stock } = req.body;
 
         // Construct the UPDATE query based on the provided stock values
         let query;
         let values;
-        if (locA_stock !== undefined && locB_stock !== undefined) {
+        if (location_a_stock !== undefined && location_b_stock !== undefined) {
             // Update both loc_A and loc_B stock
             query = `
-          UPDATE inventory
-          SET locA_stock = $1, locB_stock = $2
+          UPDATE cars
+          SET location_a_stock = $1, location_b_stock = $2
           WHERE part_number = $3
         `;
-            values = [locA_stock, locB_stock, part_number];
-        } else if (locA_stock !== undefined) {
+            values = [location_a_stock, location_b_stock, part_number];
+        } else if (location_a_stock !== undefined) {
             // Update only loc_A stock
             query = `
-          UPDATE inventory
-          SET locA_stock = $1
+          UPDATE cars
+          SET location_a_stock = $1
           WHERE part_number = $2
         `;
-            values = [locA_stock, part_number];
-        } else if (locB_stock !== undefined) {
+            values = [location_a_stock, part_number];
+        } else if (location_b_stock !== undefined) {
             // Update only loc_B stock
             query = `
-          UPDATE inventory
-          SET locB_stock = $1
+          UPDATE cars
+          SET location_b_stock = $1
           WHERE part_number = $2
         `;
-            values = [locB_stock, part_number];
+            values = [location_b_stock, part_number];
         } else {
             return res.status(400).json({ message: 'No stock values provided' });
         }
